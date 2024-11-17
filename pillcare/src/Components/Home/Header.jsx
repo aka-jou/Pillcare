@@ -51,7 +51,7 @@ function Header() {
           />
         </div>
         <div className="flex items-center space-x-2">
-          <Link to="/user" className="text-gray-700">
+          <Link to="/user" className="text-gray-700 no-underline">
             Graham Alexander
           </Link>
           <img

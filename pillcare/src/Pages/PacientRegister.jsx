@@ -1,12 +1,15 @@
 // PacientRegister.js
 import React, { useState } from 'react';
-import { Stepper, Step, StepLabel, Button } from '@mui/material';
+import { Stepper, Step, StepLabel, Button, Modal, Box, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import PatientInform from '../Components/Register/PatientInform';
 import ClinicalData from '../Components/Register/ClinicalData';
 import MedicationSchedule from '../Components/Register/MedicationSchedule';
 
 function PacientRegister() {
   const [activeStep, setActiveStep] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
   const [patient, setPatient] = useState({
     fullName: '',
     gender: '',
@@ -31,6 +34,7 @@ function PacientRegister() {
     hoursInterval: '',
     notes: '',
   });
+
   const steps = ['Datos del Paciente', 'Datos Clínicos', 'Programación de Medicación'];
 
   const handleNext = () => {
@@ -42,8 +46,16 @@ function PacientRegister() {
   };
 
   const handleSubmit = async () => {
-    // Aquí enviarías los datos al backend
-    alert('Registro exitoso');
+    setModalOpen(true); // Abrir el modal
+    setTimeout(() => {
+      setModalOpen(false); // Cerrar el modal
+      navigate('/home'); // Redirigir a la página de inicio
+    }, 2000); // Esperar 2 segundos antes de redirigir
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    navigate('/home'); // Redirigir al cerrar el modal
   };
 
   return (
@@ -77,6 +89,33 @@ function PacientRegister() {
           )}
         </div>
       </div>
+
+      {/* Modal */}
+      <Modal open={modalOpen} onClose={handleModalClose}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 300,
+            bgcolor: 'background.paper',
+            border: '2px solid #00747C',
+            borderRadius: '16px',
+            boxShadow: 24,
+            p: 4,
+            textAlign: 'center',
+          }}
+        >
+          <Typography variant="h6" component="h2" sx={{ color: '#00747C', mb: 2 }}>
+            ¡Registro Exitoso!
+          </Typography>
+          <Typography sx={{ mb: 2 }}>
+            El paciente ha sido registrado correctamente.
+          </Typography>
+          
+        </Box>
+      </Modal>
     </div>
   );
 }

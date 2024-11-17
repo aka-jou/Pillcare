@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LOGO from "../../assets/LOGO.png";
+import LogoutModal from "./LogoutModal";
 
 function Slidebar() {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+  const handleLogout = () => {
+    closeModal();
+    window.location.href = "/"; // Redirecciona al inicio al cerrar sesión
+  };
+
   return (
     <div className="w-64 bg-white h-screen p-6 shadow-lg">
       <img src={LOGO} />
@@ -11,7 +21,7 @@ function Slidebar() {
         <li>
           <Link
             to="/home"
-            className="text-teal-600 font-medium no-underline hover:text-teal-700 transition duration-200"
+            className="text-black font-medium no-underline hover:text-teal-700 transition duration-200"
           >
             Resumen
           </Link>
@@ -19,7 +29,7 @@ function Slidebar() {
         <li>
           <Link
             to="/stats"
-            className="text-gray-600 hover:text-teal-600 no-underline transition duration-200"
+            className="text-black font-medium hover:text-teal-600 no-underline transition duration-200"
           >
             Estadísticas
           </Link>
@@ -27,7 +37,7 @@ function Slidebar() {
         <li>
           <Link
             to="/monitoring"
-            className="text-gray-600 hover:text-teal-600 no-underline transition duration-200"
+            className="text-black font-medium hover:text-teal-600 no-underline transition duration-200"
           >
             Monitorear
           </Link>
@@ -51,14 +61,24 @@ function Slidebar() {
             >
               Ayuda
             </Link>
-            </li>
-            <li>
-            <Link to="/" className="text-gray-600 hover:text-blue-500">
+          </li>
+          <li>
+            <button
+              onClick={openModal}
+              className="text-gray-600 hover:text-blue-500 no-underline bg-transparent border-none cursor-pointer"
+            >
               Cerrar Sesión
-            </Link>
-            </li>
+            </button>
+          </li>
         </ul>
       </div>
+
+      {/* Modal de Logout */}
+      <LogoutModal
+        isOpen={showModal}
+        onClose={closeModal}
+        onLogout={handleLogout}
+      />
     </div>
   );
 }

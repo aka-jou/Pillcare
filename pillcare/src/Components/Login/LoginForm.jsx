@@ -58,7 +58,7 @@ function LoginForm() {
             </button>
           </div>
           <Link
-            to="home"
+            to="/home"
             className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 transition duration-300 transform active:scale-95 no-underline text-center block"
           >
             Ingresar
@@ -66,7 +66,7 @@ function LoginForm() {
         </form>
         <div className="mt-4 flex justify-center items-center text-sm">
           <span className="text-gray-600 mr-1">¿No estás registrado?</span>
-          <Link to="signup" className="text-teal-600 hover:underline">
+          <Link to="/signup" className="text-teal-600 hover:underline">
             Hazlo aquí
           </Link>
         </div>
