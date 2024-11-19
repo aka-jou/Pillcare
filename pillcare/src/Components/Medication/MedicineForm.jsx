@@ -35,7 +35,6 @@ function MedicineForm({ form, isEditing, onChange, onSave, onScanRfid }) {
         name="startDate"
         value={form.startDate}
         onChange={onChange}
-        placeholder="Fecha de Inicio"
         className="w-full px-4 py-2 rounded-md border mb-4"
       />
       <input
@@ -43,7 +42,6 @@ function MedicineForm({ form, isEditing, onChange, onSave, onScanRfid }) {
         name="endDate"
         value={form.endDate}
         onChange={onChange}
-        placeholder="Fecha de Fin"
         className="w-full px-4 py-2 rounded-md border mb-4"
       />
       <div className="flex items-center mb-4">
@@ -64,9 +62,9 @@ function MedicineForm({ form, isEditing, onChange, onSave, onScanRfid }) {
       </div>
       <button
         onClick={onSave}
-        className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 transition duration-300"
+        className="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition duration-300 w-full"
       >
-        {isEditing ? "Actualizar" : "Guardar"}
+        {isEditing ? "Guardar Cambios" : "Agregar Medicamento"}
       </button>
     </div>
   );

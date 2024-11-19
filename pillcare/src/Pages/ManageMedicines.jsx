@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import MedicinesTable from "../Components/Medication/MedicinesTable";
 import MedicineForm from "../Components/Medication/MedicineForm";
 import StatusMessage from "../Components/Medication/StatusMessage";
@@ -18,49 +17,35 @@ function ManageMedicines() {
   const [isEditing, setIsEditing] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
 
-  useEffect(() => {
-    fetchMedicines();
-  }, []);
-
-  const fetchMedicines = async () => {
-    try {
-      const response = await axios.get("https://tu-backend.com/medicines");
-      setMedicines(response.data);
-    } catch (error) {
-      console.error("Error fetching medicines:", error);
-    }
-  };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  const handleSaveMedicine = async () => {
-    try {
-      if (isEditing) {
-        await axios.put(`https://tu-backend.com/medicines/${form.id}`, form);
-      } else {
-        await axios.post("https://tu-backend.com/medicines", form);
-      }
-      fetchMedicines();
-      resetForm();
-      setStatusMessage("¡Medicamento guardado exitosamente!");
-    } catch (error) {
-      console.error("Error saving medicine:", error);
-      setStatusMessage("Error al guardar el medicamento.");
+  const handleSaveMedicine = () => {
+    if (isEditing) {
+      // Editar medicamento
+      const updatedMedicines = medicines.map((medicine) =>
+        medicine.id === form.id ? { ...form } : medicine
+      );
+      setMedicines(updatedMedicines);
+      setStatusMessage("¡Medicamento actualizado exitosamente!");
+    } else {
+      // Agregar medicamento nuevo
+      const newMedicine = {
+        ...form,
+        id: Date.now(), // Generar un ID único
+      };
+      setMedicines([...medicines, newMedicine]);
+      setStatusMessage("¡Medicamento agregado exitosamente!");
     }
+    resetForm();
   };
 
-  const handleDeleteMedicine = async (id) => {
-    try {
-      await axios.delete(`https://tu-backend.com/medicines/${id}`);
-      fetchMedicines();
-      setStatusMessage("¡Medicamento eliminado exitosamente!");
-    } catch (error) {
-      console.error("Error deleting medicine:", error);
-      setStatusMessage("Error al eliminar el medicamento.");
-    }
+  const handleDeleteMedicine = (id) => {
+    const filteredMedicines = medicines.filter((medicine) => medicine.id !== id);
+    setMedicines(filteredMedicines);
+    setStatusMessage("¡Medicamento eliminado exitosamente!");
   };
 
   const handleEditMedicine = (medicine) => {
@@ -69,7 +54,7 @@ function ManageMedicines() {
   };
 
   const handleScanRfid = () => {
-    const simulatedRfid = "12345RFID"; // Simulación de RFID
+    const simulatedRfid = "12345RFID";
     setForm({ ...form, rfidCode: simulatedRfid });
     setStatusMessage("Código RFID escaneado correctamente.");
   };
