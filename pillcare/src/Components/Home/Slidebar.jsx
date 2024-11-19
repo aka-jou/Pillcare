@@ -42,6 +42,15 @@ function Slidebar() {
             Monitorear
           </Link>
         </li>
+        <li>
+          <Link
+            to="/medicines"
+            className="text-black font-medium hover:text-teal-600 no-underline transition duration-200"
+          >
+            Medicación
+          </Link>
+        </li>
+
       </ul>
       <div className="mt-10 border-t pt-4">
         <p className="text-gray-600">General</p>

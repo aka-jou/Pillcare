@@ -11,6 +11,7 @@ import Help from "./Help";
 import LandingPage from "./Landing";
 import TestSocketConnection from "../utils/TestSocketConnection";
 import UserSettings from "./Settings";
+import ManageMedicines from "./ManageMedicines";
 function App() {
   return (
     <Routes>
@@ -25,6 +26,8 @@ function App() {
       <Route path="/help" element={<Help />} />
       <Route path="/c" element={<TestSocketConnection />} />
       <Route path="/settings" element={<UserSettings/>} />
+      <Route path="/medicines" element={<ManageMedicines/>} />
+
       
      
 
