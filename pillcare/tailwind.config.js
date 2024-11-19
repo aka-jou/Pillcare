@@ -10,6 +10,7 @@ module.exports = {
         800: "800px",
       },
     },
+    
   },
   plugins: [],
 };

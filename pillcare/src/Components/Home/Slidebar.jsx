@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  FaHome,
+  FaChartBar,
+  FaEye,
+  FaPills,
+  FaCog,
+  FaQuestionCircle,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import LOGO from "../../assets/LOGO.png";
 import LogoutModal from "./LogoutModal";
 
@@ -10,79 +19,90 @@ function Slidebar() {
   const closeModal = () => setShowModal(false);
   const handleLogout = () => {
     closeModal();
-    window.location.href = "/"; // Redirecciona al inicio al cerrar sesión
+    window.location.href = "/";
   };
 
   return (
-    <div className="w-64 bg-white h-screen p-6 shadow-lg">
-      <img src={LOGO} />
+    <div className="w-64 bg-[#FDFDFD] text-teal-600 h-screen p-6 shadow-lg flex flex-col justify-between">
+      {/* Logo */}
+      <div>
+        <img src={LOGO} alt="Logo" className="mb-8" />
 
-      <ul className="space-y-4 list-none">
-        <li>
-          <Link
-            to="/home"
-            className="text-black font-medium no-underline hover:text-teal-700 transition duration-200"
-          >
-            Resumen
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/stats"
-            className="text-black font-medium hover:text-teal-600 no-underline transition duration-200"
-          >
-            Estadísticas
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/monitoring"
-            className="text-black font-medium hover:text-teal-600 no-underline transition duration-200"
-          >
-            Monitorear
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/medicines"
-            className="text-black font-medium hover:text-teal-600 no-underline transition duration-200"
-          >
-            Medicación
-          </Link>
-        </li>
-
-      </ul>
-      <div className="mt-10 border-t pt-4">
-        <p className="text-gray-600">General</p>
-        <ul className="space-y-4 list-none">
-          <li>
+        <ul className="space-y-6 list-none">
+          <li className="flex items-center group">
+            <FaHome className="mr-3 text-teal-600 group-hover:text-[#202022] transition duration-300" />
             <Link
-              to="/settings"
-              className="text-gray-600 hover:text-teal-600 no-underline transition duration-200"
+              to="/home"
+              className="font-medium no-underline text-[#202022] group-hover:text-white transition duration-300 px-2 py-1 rounded-md group-hover:bg-teal-600"
             >
-              Configuración
+              Resumen
             </Link>
           </li>
-          <li>
+          <li className="flex items-center group">
+            <FaChartBar className="mr-3 text-teal-600 group-hover:text-[#202022] transition duration-300" />
             <Link
-              to="/help"
-              className="text-gray-600 hover:text-teal-600 no-underline transition duration-200"
+              to="/stats"
+              className="font-medium no-underline text-[#202022] group-hover:text-white transition duration-300 px-2 py-1 rounded-md group-hover:bg-teal-600"
             >
-              Ayuda
+              Estadísticas
             </Link>
           </li>
-          <li>
-            <button
-              onClick={openModal}
-              className="text-gray-600 hover:text-blue-500 no-underline bg-transparent border-none cursor-pointer"
+          <li className="flex items-center group">
+            <FaEye className="mr-3 text-teal-600 group-hover:text-[#202022] transition duration-300" />
+            <Link
+              to="/monitoring"
+              className="font-medium no-underline text-[#202022] group-hover:text-white transition duration-300 px-2 py-1 rounded-md group-hover:bg-teal-600"
             >
-              Cerrar Sesión
-            </button>
+              Monitorear
+            </Link>
+          </li>
+          <li className="flex items-center group">
+            <FaPills className="mr-3 text-teal-600 group-hover:text-[#202022] transition duration-300" />
+            <Link
+              to="/medicines"
+              className="font-medium no-underline text-[#202022] group-hover:text-white transition duration-300 px-2 py-1 rounded-md group-hover:bg-teal-600"
+            >
+              Medicación
+            </Link>
           </li>
         </ul>
       </div>
 
-      {/* Modal de Logout */}
+      <div>
+        <div className="mt-12 border-t border-[#CACACA] pt-6">
+          <p className="text-teal-600 font-semibold mb-6">General</p>
+          <ul className="space-y-6 list-none">
+            <li className="flex items-center group">
+              <FaCog className="mr-3 text-teal-600 group-hover:text-[#202022] transition duration-300" />
+              <Link
+                to="/settings"
+                className="text-[#202022] group-hover:text-white no-underline transition duration-300 px-2 py-1 rounded-md group-hover:bg-teal-600"
+              >
+                Configuración
+              </Link>
+            </li>
+            <li className="flex items-center group">
+              <FaQuestionCircle className="mr-3 text-teal-600 group-hover:text-[#202022] transition duration-300" />
+              <Link
+                to="/help"
+                className="text-[#202022] group-hover:text-white no-underline transition duration-300 px-2 py-1 rounded-md group-hover:bg-teal-600"
+              >
+                Ayuda
+              </Link>
+            </li>
+            <li className="flex items-center group">
+              <FaSignOutAlt className="mr-3 text-teal-600 group-hover:text-red-500 transition duration-300" />
+              <button
+                onClick={openModal}
+                className="text-[#202022] group-hover:text-red-500 no-underline bg-transparent border-none cursor-pointer px-2 py-1 rounded-md group-hover:bg-red-100 transition duration-300"
+              >
+                Cerrar Sesión
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <LogoutModal
         isOpen={showModal}
         onClose={closeModal}

@@ -3,12 +3,11 @@ import React from 'react';
 function InfoCards() {
   const info = [
     { title: 'Paciente', illness: 'Diabetes Tipo 2', image: 'https://via.placeholder.com/100' },
-    { title: 'Spendings' },
-    { title: 'Savings' },
+  
   ];
 
   const userInfo = {
-    name: 'Juan Pérez',
+    name: 'Jhon Willis',
     age: 65,
     status: 'Estable',
   };
@@ -22,7 +21,7 @@ function InfoCards() {
             item.title === 'Paciente' ? 'col-span-2' : ''
           }`}
         >
-          <p className="text-gray-600">{item.title}</p>
+          <p className="text-teal-600 font-bold text-xl">{item.title}</p>
           {item.title === 'Paciente' && (
             <>
               <div className="flex items-center gap-4 mb-4">
@@ -33,7 +32,7 @@ function InfoCards() {
                 />
                 <div>
                   <p className="text-lg font-bold text-gray-700">
-                    Nombre: {userInfo.name}
+                     {userInfo.name}
                   </p>
                   <p className="text-md text-gray-600">
                     Enfermedad: {item.illness}

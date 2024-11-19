@@ -4,10 +4,10 @@ function RealTimeMonitoring() {
   const [medicationStatus, setMedicationStatus] = useState('En tiempo');
   const [alert, setAlert] = useState('');
 
-  // Simulación de monitoreo en tiempo real
+
   useEffect(() => {
     const timer = setInterval(() => {
-      // Aquí se podrían realizar verificaciones de estado de la medicación y actualizar la alerta
+    
       const randomCheck = Math.random();
       if (randomCheck < 0.2) {
         setMedicationStatus('Retrasado');
@@ -19,7 +19,7 @@ function RealTimeMonitoring() {
         setMedicationStatus('En tiempo');
         setAlert('');
       }
-    }, 5000); // Cada 5 segundos simula un cambio de estado
+    }, 5000); 
 
     return () => clearInterval(timer);
   }, []);
@@ -28,7 +28,6 @@ function RealTimeMonitoring() {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-8">
       <h2 className="text-2xl font-semibold text-teal-600 mb-6">Monitoreo en Tiempo Real</h2>
 
-      {/* Notificación de Alerta */}
       {alert && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6 w-full max-w-2xl">
           <strong className="font-bold">¡Alerta!</strong>
@@ -53,7 +52,7 @@ function RealTimeMonitoring() {
           </span>
         </div>
 
-        {/* Información de Medicación */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col items-center bg-gray-50 rounded-lg p-4 shadow-md">
             <p className="text-lg font-medium text-gray-600">Dosis Programada</p>
@@ -65,7 +64,6 @@ function RealTimeMonitoring() {
           </div>
         </div>
 
-        {/* Historial de Medicación */}
         <div className="mt-8">
           <h3 className="text-lg font-semibold text-gray-600 mb-4">Historial de Dosis Recientes</h3>
           <div className="bg-white rounded-lg shadow-md overflow-hidden">

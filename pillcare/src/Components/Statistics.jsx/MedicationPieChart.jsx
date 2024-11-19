@@ -17,7 +17,7 @@ const data = {
 
 function MedicationPieChart() {
   return (
-    <div style={{ width: '400px', height: '400px' }}> {/* Ajusta el tamaño aquí */}
+    <div style={{ width: '400px', height: '400px' }}> 
       <Pie data={data} options={{ maintainAspectRatio: false }} />
     </div>
   );

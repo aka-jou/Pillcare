@@ -7,12 +7,12 @@ function HeaderMain() {
     <header className="flex justify-between items-center px-8 py-0 bg-[#00747C] shadow-md h-28">
      <img src={pillwhite} className="w-[250px] h-[251px]" alt="Pill Image" />
 
-     <h2 className="text-white"> Tu salud, siempre en el momento indicado</h2>
+     <h2 className="text-white"> La tecnología al servicio de tu bienestar</h2>
 
       <div className="space-x-4">
         <Link
           to="/login"
-          className="px-4 py-2 bg-white text-[#00747C] rounded hover:bg-[#00BBC9] hover:text-white transition duration-300 no-underline"
+          className="px-4 py-2 bg-white text-black rounded hover:bg-gray-600   transition duration-300 no-underline"
         >
           Iniciar sesión
         </Link>

@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swiper-button-next, .swiper-button-prev {
+    @apply text-[#00747C] hover:text-[#00BBC9] transition-colors duration-300;
+  }
+
+  .swiper-pagination-bullet {
+    @apply bg-[#00747C] opacity-100; /* Color inicial */
+  }
+  
+  .swiper-pagination-bullet-active {
+    @apply bg-[#00BBC9]; /* Color del punto activo */
+  }
+  

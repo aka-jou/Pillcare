@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 
 function MedicationCalendar() {
   const [value, setValue] = useState(new Date());
-  const medicationDays = [new Date(2024, 10, 20), new Date(2024, 10, 22)]; // Ejemplo de días de medicación.
+  const medicationDays = [new Date(2024, 10, 20), new Date(2024, 10, 22)]; 
 
   const tileContent = ({ date, view }) => {
     if (view === 'month' && medicationDays.some((day) => day.toDateString() === date.toDateString())) {

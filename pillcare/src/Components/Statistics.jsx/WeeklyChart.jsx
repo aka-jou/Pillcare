@@ -47,7 +47,7 @@ function WeeklyChart() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="bg-white rounded-2xl shadow-lg p-6">
       <h3 className="text-xl font-medium text-teal-600 mb-4">Cumplimiento Semanal</h3>
       <Line data={data} options={options} />
     </div>

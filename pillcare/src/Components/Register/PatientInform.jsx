@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextField } from '@mui/material';
+import React from "react";
+import { TextField } from "@mui/material";
 
 function PatientInform({ patient, setPatient }) {
   const handleInputChange = (e) => {
@@ -11,7 +11,7 @@ function PatientInform({ patient, setPatient }) {
   };
 
   return (
-    <form className="space-y-4">
+    <form className="space-y-6 bg-[#FDFDFD] p-8 rounded-lg ">
       <TextField
         fullWidth
         label="Nombre Completo"
@@ -19,6 +19,19 @@ function PatientInform({ patient, setPatient }) {
         name="fullName"
         value={patient.fullName}
         onChange={handleInputChange}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { borderColor: "#00747C" },
+            "&:hover fieldset": { borderColor: "#00BBC9" },
+            "&.Mui-focused fieldset": { borderColor: "#00BBC9" },
+          },
+          "& .MuiInputLabel-root": {
+            color: "#00747C",
+          },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: "#00BBC9",
+          },
+        }}
       />
       <TextField
         fullWidth
@@ -27,6 +40,19 @@ function PatientInform({ patient, setPatient }) {
         name="gender"
         value={patient.gender}
         onChange={handleInputChange}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { borderColor: "#00747C" },
+            "&:hover fieldset": { borderColor: "#00BBC9" },
+            "&.Mui-focused fieldset": { borderColor: "#00BBC9" },
+          },
+          "& .MuiInputLabel-root": {
+            color: "#00747C",
+          },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: "#00BBC9",
+          },
+        }}
       />
       <TextField
         fullWidth
@@ -36,6 +62,19 @@ function PatientInform({ patient, setPatient }) {
         name="age"
         value={patient.age}
         onChange={handleInputChange}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { borderColor: "#00747C" },
+            "&:hover fieldset": { borderColor: "#00BBC9" },
+            "&.Mui-focused fieldset": { borderColor: "#00BBC9" },
+          },
+          "& .MuiInputLabel-root": {
+            color: "#00747C",
+          },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: "#00BBC9",
+          },
+        }}
       />
       <TextField
         fullWidth
@@ -44,6 +83,19 @@ function PatientInform({ patient, setPatient }) {
         name="address"
         value={patient.address}
         onChange={handleInputChange}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { borderColor: "#00747C" },
+            "&:hover fieldset": { borderColor: "#00BBC9" },
+            "&.Mui-focused fieldset": { borderColor: "#00BBC9" },
+          },
+          "& .MuiInputLabel-root": {
+            color: "#00747C",
+          },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: "#00BBC9",
+          },
+        }}
       />
       <TextField
         fullWidth
@@ -52,6 +104,19 @@ function PatientInform({ patient, setPatient }) {
         name="phone"
         value={patient.phone}
         onChange={handleInputChange}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { borderColor: "#00747C" },
+            "&:hover fieldset": { borderColor: "#00BBC9" },
+            "&.Mui-focused fieldset": { borderColor: "#00BBC9" },
+          },
+          "& .MuiInputLabel-root": {
+            color: "#00747C",
+          },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: "#00BBC9",
+          },
+        }}
       />
     </form>
   );

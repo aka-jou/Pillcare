@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { TextField, Button, IconButton, InputAdornment, Link } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,67 +13,92 @@ function SignupForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    navigate('/pacientRegister'); // Redirige a la página de bienvenida o a la ruta de destino.
+    navigate('/pacientRegister'); 
   };
 
   return (
-    <div className="w-full md:w-1/2 bg-gray-100 rounded-2xl p-8">
-      <h2 className="text-3xl font-semibold text-teal-600 mb-6">Crea tu cuenta</h2>
+    <div className="w-full md:w-1/2 bg-[#FDFDFD] rounded-2xl p-8 text-center shadow-lg">
+      <h2 className="text-3xl font-semibold text-teal-600 mb-6 item">Crea tu cuenta</h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
-          <input
-            type="text"
-            placeholder="Nombre completo"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          <TextField
+            fullWidth
+            label="Nombre completo"
+            variant="outlined"
+            color="primary"
           />
         </div>
         <div>
-          <input
+          <TextField
+            fullWidth
+            label="Número de teléfono"
             type="tel"
-            placeholder="Número de teléfono"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            variant="outlined"
+            color="primary"
           />
         </div>
         <div>
-          <input
+          <TextField
+            fullWidth
+            label="Fecha de nacimiento"
             type="date"
-            placeholder="Fecha de nacimiento"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            InputLabelProps={{ shrink: true }}
+            variant="outlined"
+            color="primary"
           />
         </div>
         <div>
-          <input
+          <TextField
+            fullWidth
+            label="Correo electrónico"
             type="email"
-            placeholder="Correo electrónico"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            variant="outlined"
+            color="primary"
           />
         </div>
-        <div className="relative">
-          <input
+        <div>
+          <TextField
+            fullWidth
+            label="Contraseña"
             type={showPassword ? "text" : "password"}
-            placeholder="Contraseña"
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            variant="outlined"
+            color="primary"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={togglePasswordVisibility}
+                    edge="end"
+                    aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
-          <button
-            type="button"
-            onClick={togglePasswordVisibility}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none"
-            aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-          >
-            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-          </button>
         </div>
-        <button
+        <Button
+          fullWidth
           type="submit"
-          className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 transition duration-300"
+          variant="contained"
+          sx={{
+            backgroundColor: '#00747C',
+            '&:hover': {
+              backgroundColor: '#00BBC9',
+            },
+          }}
         >
           Unirse ahora
-        </button>
+        </Button>
       </form>
       <div className="mt-4 text-center">
         <span className="text-gray-600">¿Ya tienes una cuenta? </span>
-        <Link to="/login" className="text-teal-600 hover:underline">
+        <Link
+          href="/login"
+          underline="hover"
+          sx={{ color: '#00747C', fontWeight: 'bold' }}
+        >
           Inicia sesión aquí
         </Link>
       </div>
